@@ -1,0 +1,15 @@
+pipeline {
+    agent { label 'packer' }
+    stages {
+        stage('Run packer') {
+            steps {
+                echo 'hello world!!!'
+            }
+        }
+    }
+    post {
+        cleanup {
+            cleanWs()
+        }
+    }
+}
