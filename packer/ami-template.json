@@ -1,0 +1,42 @@
+{
+    "variables": {
+        "aws_access_key": "",
+        "aws_secret_key": ""
+    },
+    "builders": [{
+        "type": "amazon-ebs",
+        "access_key": "{{user `aws_access_key`}}",
+        "secret_key": "{{user `aws_secret_key`}}",
+        "region": "us-east-1",
+        "subnet_id": "subnet-0fee81395b8ef8070",
+        "associate_public_ip_address": true,
+        "availability_zone": "us-east-1e",
+        "source_ami_filter": {
+            "filters": {
+                "virtualization-type": "hvm",
+                "name": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",
+                "root-device-type": "ebs"
+            },
+            "owners": ["099720109477"],
+            "most_recent": true
+        },
+        "security_group_ids": ["sg-0609210ce6038dbac","sg-00e5f8e14fa956043"],
+        "instance_type": "t2.micro",
+        "ssh_username": "ubuntu",
+        "ami_name": "limitd-example {{timestamp}}"
+    }],
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": [
+                "sleep 30",
+                "sudo apt-get update",
+                "sudo apt-get install -y curl",
+                "curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -",
+                "sudo apt-get install -y nodejs",
+                "node -v",
+                "npm -v"
+            ]
+        }
+    ]
+}
