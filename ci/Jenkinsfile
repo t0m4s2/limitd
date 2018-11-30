@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage("Run Tests") {
             steps {
-                  echo 'Hello world!'
+                  sh 'packer validate packer/ami-template.json'
             }
         }
         stage('Build docker image') {
