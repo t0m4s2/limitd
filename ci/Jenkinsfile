@@ -1,9 +1,21 @@
 pipeline {
     agent { label 'packer' }
     stages {
-        stage('Run packer') {
+        stage("Run Tests") {
             steps {
-                echo 'hello world!!!'
+                  echo 'Hello world!'
+            }
+        }
+        stage('Build docker image') {
+            steps {
+                  sh 'docker build -t auth0/limitd:v1 .'
+                  sh 'docker save auth0/limitd:v1 > limitd.tar'
+                  sh 'docker rmi auth0/limitd:v1'
+            }
+        }
+        stage('Build AMI') {
+            steps {
+                  sh 'packer build packer/ami-template.json'
             }
         }
     }
