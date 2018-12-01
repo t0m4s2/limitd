@@ -3,19 +3,22 @@ pipeline {
     stages {
         stage("Run Tests") {
             steps {
-                  sh 'packer validate packer/ami-template.json'
+                sh 'packer validate packer/ami-template.json'
             }
         }
         stage('Build docker image') {
             steps {
-                  sh 'docker build -t auth0/limitd:v1 .'
-                  sh 'docker save auth0/limitd:v1 > limitd.tar'
-                  sh 'docker rmi auth0/limitd:v1'
+                sh 'docker build -t auth0/limitd:v1 .'
+                sh 'docker save auth0/limitd:v1 > limitd.tar'
+                sh 'docker rmi auth0/limitd:v1'
             }
         }
         stage('Build AMI') {
             steps {
-                  sh 'packer build packer/ami-template.json'
+                sshagent(credentials: ['auth0test']) {
+                    sh 'packer build packer/ami-template.json'
+                    sh 'rm limitd.tar'
+                }
             }
         }
     }
