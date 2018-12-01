@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage("Run Tests") {
             steps {
-                sh 'packer validate packer/ami-template.json'
+                echo "TODO: Run tests"
             }
         }
         stage('Build docker image') {
@@ -16,6 +16,7 @@ pipeline {
         stage('Build AMI') {
             steps {
                 sshagent(credentials: ['auth0test']) {
+                    sh 'packer validate packer/ami-template.json'
                     sh 'packer build packer/ami-template.json'
                 }
             }
