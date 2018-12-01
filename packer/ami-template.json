@@ -8,6 +8,7 @@
         "access_key": "{{user `aws_access_key`}}",
         "secret_key": "{{user `aws_secret_key`}}",
         "region": "us-east-1",
+        "s3_bucket": "limitd",
         "subnet_id": "subnet-0fee81395b8ef8070",
         "associate_public_ip_address": true,
         "ssh_interface": "private_ip",
@@ -18,7 +19,13 @@
         "ssh_username": "ec2-user",
         "ssh_keypair_name": "auth0test",
         "ssh_agent_auth": true,
-        "ami_name": "limitd-example {{timestamp}}"
+        "ami_name": "limitd-example {{timestamp}}",
+        "ami_block_device_mappings": [{
+            "device_name": "/dev/sdh",
+            "volume_size": 8,
+            "volume_type": "gp2",
+            "delete_on_termination": true
+        }]
     }],
     "provisioners": [
         {
