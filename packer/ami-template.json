@@ -30,11 +30,18 @@
     }],
     "provisioners": [
         {
+            "type": "file",
+            "source": "./limitd.tar",
+            "destination": "/home/ubuntu/"
+        },
+        {
             "type": "shell",
             "inline": [
                 "sleep 30",
                 "sudo apt-get update",
                 "sudo apt-get install -y docker"
+                "sudo docker import /home/ubuntu/limitd.tar auth0/limitd:v1"
+                "rm /home/ubuntu/limitd.tar"
             ]
         }
     ]
