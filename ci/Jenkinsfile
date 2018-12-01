@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage("Run Tests") {
             steps {
-                echo "TODO: Run tests"
+                sh 'npm init'
+                sh 'npm test'
             }
         }
         stage('Build docker image') {
