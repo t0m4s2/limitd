@@ -37,7 +37,9 @@
             "inline": [
                 "sleep 30",
                 "sudo amazon-linux-extras install docker",
-                "docker import /home/ec2-user/limitd.tar auth0/limitd:v1",
+                "sudo systemctl start docker",
+                "sudo systemctl enable docker",
+                "sudo docker import /home/ec2-user/limitd.tar auth0/limitd:v1",
                 "rm /home/ec2-user/limitd.tar"
             ]
         }
