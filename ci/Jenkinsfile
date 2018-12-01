@@ -23,7 +23,7 @@ pipeline {
     }
     post {
         cleanup {
-            sh 'rm limitd.tar'
+            cleanWs()
         }
     }
 }
