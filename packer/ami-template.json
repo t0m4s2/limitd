@@ -10,6 +10,7 @@
         "region": "us-east-1",
         "subnet_id": "subnet-0fee81395b8ef8070",
         "associate_public_ip_address": true,
+        "ssh_interface": "private_ip",
         "availability_zone": "us-east-1e",
         "source_ami_filter": {
             "filters": {
