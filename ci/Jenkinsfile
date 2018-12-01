@@ -17,9 +17,13 @@ pipeline {
             steps {
                 sshagent(credentials: ['auth0test']) {
                     sh 'packer build packer/ami-template.json'
-                    sh 'rm limitd.tar'
                 }
             }
+        }
+    }
+    post {
+        cleanup {
+            sh 'rm limitd.tar'
         }
     }
 }
