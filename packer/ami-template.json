@@ -30,15 +30,15 @@
         {
             "type": "file",
             "source": "./limitd.tar",
-            "destination": "/home/ubuntu/"
+            "destination": "/home/ec2-user/"
         },
         {
             "type": "shell",
             "inline": [
                 "sleep 30",
                 "sudo amazon-linux-extras install docker",
-                "docker import /home/ubuntu/limitd.tar auth0/limitd:v1",
-                "rm /home/ubuntu/limitd.tar"
+                "docker import /home/ec2-user/limitd.tar auth0/limitd:v1",
+                "rm /home/ec2-user/limitd.tar"
             ]
         }
     ]
