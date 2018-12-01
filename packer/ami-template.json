@@ -23,6 +23,8 @@
         "security_group_ids": ["sg-0609210ce6038dbac","sg-00e5f8e14fa956043"],
         "instance_type": "t2.micro",
         "ssh_username": "ubuntu",
+        "ssh_keypair_name": "",
+        "ssh_agent_auth": true,
         "ami_name": "limitd-example {{timestamp}}"
     }],
     "provisioners": [
