@@ -9,7 +9,7 @@
         "secret_key": "{{user `aws_secret_key`}}",
         "region": "us-east-1",
         "subnet_id": "subnet-0fee81395b8ef8070",
-        "associate_public_ip_address": true,
+        "associate_public_ip_address": false,
         "availability_zone": "us-east-1e",
         "source_ami_filter": {
             "filters": {
