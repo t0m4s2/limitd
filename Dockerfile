@@ -15,5 +15,7 @@ RUN yarn
 # Bundle app source
 ADD . /app
 
+RUN mkdir -p /var/limitd/database
+
 # Don't use npm start to ensure it runs at PID=1
-CMD ["./bin/limitd"]
+CMD ["./bin/limitd", "--config-file", "./conf/limitd.conf.example"]
