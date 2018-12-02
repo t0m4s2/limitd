@@ -19,9 +19,9 @@
         "ssh_keypair_name": "auth0test",
         "ssh_agent_auth": true,
         "ami_name": "limitd-example {{timestamp}}",
-        "ami_block_device_mappings": [{
-            "device_name": "/dev/sdh",
-            "volume_size": 8,
+        "launch_block_device_mappings": [{
+            "device_name": "/dev/sda1",
+            "volume_size": 12,
             "volume_type": "gp2",
             "delete_on_termination": true
         }]
@@ -40,7 +40,8 @@
                 "sudo systemctl start docker",
                 "sudo systemctl enable docker",
                 "sudo docker load < /home/ec2-user/limitd.tar",
-                "rm /home/ec2-user/limitd.tar"
+                "rm /home/ec2-user/limitd.tar",
+                "sudo docker run -p 9231:9231 -d auth0/limitd:v1"
             ]
         }
     ]
