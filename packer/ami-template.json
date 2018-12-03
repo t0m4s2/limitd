@@ -18,13 +18,7 @@
         "ssh_username": "ec2-user",
         "ssh_keypair_name": "auth0test",
         "ssh_agent_auth": true,
-        "ami_name": "limitd-example {{timestamp}}",
-        "launch_block_device_mappings": [{
-            "device_name": "/dev/sda1",
-            "volume_size": 12,
-            "volume_type": "gp2",
-            "delete_on_termination": true
-        }]
+        "ami_name": "limitd-example {{timestamp}}"
     }],
     "provisioners": [
         {
