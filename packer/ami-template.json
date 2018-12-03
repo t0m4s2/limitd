@@ -35,7 +35,7 @@
                 "sudo systemctl enable docker",
                 "sudo docker load < /home/ec2-user/limitd.tar",
                 "rm /home/ec2-user/limitd.tar",
-                "sudo docker run -p 9231:9231 -d auth0/limitd:v1"
+                "sudo docker run -p 9231:9231 --restart unless-stopped -d auth0/limitd:v1"
             ]
         }
     ]
